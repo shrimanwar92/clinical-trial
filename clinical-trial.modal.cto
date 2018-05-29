@@ -1,0 +1,77 @@
+namespace org.acme.ClinicalTrial
+
+participant Company identified by companyId {
+	o String companyId
+	o String companyName
+	o String companyDescription
+	o String companyAddress
+	o String manufacturingFacilitiesAddress
+	o String regulatoryStatus
+	o String intellectualStatus
+	o String patentInformation
+}
+
+participant Disease identified by diseaseId {
+	o String diseaseName
+}
+
+abstract participant User identified by userId {
+    o String userId
+  	o String firstName
+    o String lastName
+    o Integer age
+}
+
+participant Volunteer extends User {
+	o Boolean consentGiven default = false
+	--> Disease[] diseaseSufferingFrom
+	o Double dosage
+}
+
+participant Investigator extends User {
+
+}
+
+asset Drug identified by drugId {
+	o String drugId
+	--> Company companyId
+	--> Investigator investigator
+	o String drugName
+	o String drugDescription
+	o String productDevelopment
+	o String strainDetails
+	o String drugSubstance
+	o String drugProduct
+	o Boolean isApproved default = false
+	o Boolean isRegistered default = false
+	--> Protocol protocol
+	--> PhaseOne phase1
+	--> PhaseTwo phase2
+	--> PhaseThree phase3
+}
+
+concept Protocol {
+	o String protocolDescription
+	o String data // it may contain protocol document ** To use IPFS **
+}
+
+concept PhaseOne {
+	o DateTime startdate
+	o DateTime enddate
+	--> Volunteer[] volunteers
+	o String purpose
+}
+
+concept PhaseTwo {
+	o DateTime startdate
+	o DateTime enddate
+	--> Volunteer[] volunteers
+	o String purpose
+}
+
+concept PhaseThree {
+	o DateTime startdate
+	o DateTime enddate
+	--> Volunteer[] volunteers
+	o String purpose
+}
