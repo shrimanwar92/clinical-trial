@@ -12,6 +12,7 @@ participant Company identified by companyId {
 }
 
 participant Disease identified by diseaseId {
+	o String diseaseId
 	o String diseaseName
 }
 
