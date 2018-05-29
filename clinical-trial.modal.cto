@@ -25,8 +25,8 @@ abstract participant User identified by userId {
 
 participant Volunteer extends User {
 	o Boolean consentGiven default = false
+	o Boolean isPlaceboPatient default = false
 	--> Disease[] diseaseSufferingFrom
-	o Double dosage
 }
 
 participant Investigator extends User {
@@ -46,9 +46,9 @@ asset Drug identified by drugId {
 	o Boolean isApproved default = false
 	o Boolean isRegistered default = false
 	--> Protocol protocol
-	--> PhaseOne phase1
-	--> PhaseTwo phase2
-	--> PhaseThree phase3
+	--> PhaseOne p1
+	--> PhaseTwo p2
+	--> PhaseThree p3
 }
 
 concept Protocol {
@@ -56,26 +56,23 @@ concept Protocol {
 	o String data // it may contain protocol document ** To use IPFS **
 }
 
-concept PhaseOne {
+concept ClinicalTrialPhase {
 	o DateTime startdate
 	o DateTime enddate
 	--> Volunteer[] volunteers
 	o String purpose
 	o Boolean isSuccess default = false
+	o Double dosage
+}
+
+concept PhaseOne {
+	--> ClinicalTrialPhase phase1
 }
 
 concept PhaseTwo {
-	o DateTime startdate
-	o DateTime enddate
-	--> Volunteer[] volunteers
-	o String purpose
-	o Boolean isSuccess default = false
+	--> ClinicalTrialPhase phase2
 }
 
 concept PhaseThree {
-	o DateTime startdate
-	o DateTime enddate
-	--> Volunteer[] volunteers
-	o String purpose
-	o Boolean isSuccess default = false
+	--> ClinicalTrialPhase phase3
 }
