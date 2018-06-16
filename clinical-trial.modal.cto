@@ -91,3 +91,21 @@ transaction PhaseOneTrail {
   o String purpose
   o Double dosage default = 0.0
 }
+
+transaction PhaseTwoTrail {
+  --> Drug drug
+  o DateTime startdate
+  o DateTime enddate
+  --> Volunteer[] volunteers
+  o String purpose
+  o Double dosage default = 0.0
+}
+
+transaction PhaseThreeTrail {
+  --> Drug drug
+  o DateTime startdate
+  o DateTime enddate
+  --> Volunteer[] volunteers
+  o String purpose
+  o Double dosage default = 0.0
+}
