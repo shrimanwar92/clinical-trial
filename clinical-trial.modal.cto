@@ -11,11 +11,6 @@ participant Company identified by companyId {
 	o String patentInformation
 }
 
-participant Disease identified by diseaseId {
-	o String diseaseId
-	o String diseaseName
-}
-
 abstract participant User identified by userId {
     o String userId
     o String firstName
@@ -26,7 +21,7 @@ abstract participant User identified by userId {
 participant Volunteer extends User {
 	o Boolean consentGiven default = false
 	o Boolean isPlaceboPatient default = false
-	--> Disease[] diseaseSufferingFrom
+	o String diseaseSufferingFrom
 }
 
 participant Investigator extends User {
