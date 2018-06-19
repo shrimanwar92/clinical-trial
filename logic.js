@@ -136,7 +136,6 @@ var namespace = 'org.acme.ClinicalTrial';
  	p1.enddate = new Date();
  	p1.volunteers = [];
  	p1.purpose = "purpose of phase 1 goes here."
- 	p1.dosage = 100;
  	drug.p1 = p1;
  	
   	let p2 = factory.newConcept(namespace, 'PhaseTwo');
@@ -144,7 +143,6 @@ var namespace = 'org.acme.ClinicalTrial';
  	p2.enddate = new Date();
  	p2.volunteers = [];
  	p2.purpose = "purpose of phase 2 goes here."
- 	p2.dosage = 100;
  	drug.p2 = p2;
 
   	let p3 = factory.newConcept(namespace, 'PhaseThree');
@@ -152,7 +150,6 @@ var namespace = 'org.acme.ClinicalTrial';
  	p3.enddate = new Date();
  	p3.volunteers = [];
  	p3.purpose = "purpose of phase 3 goes here."
- 	p3.dosage = 100;
  	drug.p3 = p3;
 
   	let assetRegistry = await getAssetRegistry(namespace + '.Drug');
