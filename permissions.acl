@@ -15,31 +15,6 @@
 /**
  * Sample access control list.
  */
-rule EverybodyCanReadEverything {
-    description: "Allow all participants read access to all resources"
-    participant: "org.acme.clinicaltrial.SampleParticipant"
-    operation: READ
-    resource: "org.acme.clinicaltrial.*"
-    action: ALLOW
-}
-
-rule EverybodyCanSubmitTransactions {
-    description: "Allow all participants to submit transactions"
-    participant: "org.acme.clinicaltrial.SampleParticipant"
-    operation: CREATE
-    resource: "org.acme.clinicaltrial.SampleTransaction"
-    action: ALLOW
-}
-
-rule OwnerHasFullAccessToTheirAssets {
-    description: "Allow all participants full access to their assets"
-    participant(p): "org.acme.clinicaltrial.SampleParticipant"
-    operation: ALL
-    resource(r): "org.acme.clinicaltrial.SampleAsset"
-    condition: (r.owner.getIdentifier() === p.getIdentifier())
-    action: ALLOW
-}
-
 rule SystemACL {
   description:  "System ACL to permit all access"
   participant: "org.hyperledger.composer.system.Participant"
